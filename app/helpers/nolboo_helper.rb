@@ -1,0 +1,2 @@
+module NolbooHelper
+end

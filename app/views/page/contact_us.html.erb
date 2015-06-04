@@ -1,0 +1,32 @@
+<h1>Contact_us</h1>
+
+Your name is <%= @name %>. <br/>
+Your email is: <%= @email %> <br/>
+
+<pre>
+<% params.each do |key, value| # DEBUGGING ONLY!!!! %>
+    <%= key + " ==> " + value %>
+<% end %>
+</pre>
+
+<% if !@submitted || @form_error %>
+    <%= @error_msg %> <br/>
+    <%= form_for contact_us_path, :method => "POST" do %>
+        <%= label_tag :name, "Enter your Full Name: " %>
+        <%= text_field_tag :name, @name, :autofocus => "autofocus", :placeholder => "Enter your name" %> <br/>
+        <%= label_tag :email, "Enter your Email Address: " %>
+        <%= email_field_tag :email, @email, :placeholder => "something@domain.com" %> <br/>
+        <%= label_tag :question, "Enter your question: " %> <br/>
+        <%= text_area_tag :question, @question, :size => "50x10" %> <br/>
+        <%= check_box_tag :newsletter, "newsletter", @newsletter %>
+        Subscribe to my newletter?
+        <br/>
+        <%= radio_button_tag :gender, "Male", @male %> Male <br/>
+        <%= radio_button_tag :gender, "Female", @female %> Female <br/>
+        <%= select_tag :product, options_for_select( [ ['Skies', 0], ['Poles', 1], ['Boots', 2]], @product) %>
+        <br/>
+        <%= submit_tag "Ask Question" %>
+    <% end %>
+<% else %>
+    Thanks for your informatin.
+<% end %>
