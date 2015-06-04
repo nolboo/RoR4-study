@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :products
+
   get 'home' => "page#home"
   get 'about_us' => "page#about_us"
 
@@ -8,7 +10,6 @@ Rails.application.routes.draw do
 
   match "contact_us" => "page#contact_us", :via => [:post, :get]
 
-  get 'products' => "page#products"
   get 'newsletter'=> "page#newsletter"
   get 'blog' => "page#blog"
 
