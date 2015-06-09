@@ -11,7 +11,7 @@ class PageController < ApplicationController
     @name = params["name"]
 
     if @name == ""
-      @error_msg = "Must enter your name!"
+      flash.now['error'] = "Must enter your name!"
       @form_error = true
     end
 

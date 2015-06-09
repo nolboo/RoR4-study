@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :products
+  resources :movies
 
+  get 'people/index'
   get 'home' => "page#home"
   get 'about_us' => "page#about_us"
 
