@@ -2,8 +2,9 @@
 
 <h1>Listing Movies</h1>
 
-<%= link_to "Previous", movies_path(:page => @prev_page) %> &nbsp;
-<%= link_to "Next", movies_path(:page => @next_page) %>
+<%= paginate @movies %>
+<%#= link_to "Previous", movies_path(:page => @prev_page) %>
+<%#= link_to "Next", movies_path(:page => @next_page) %>
 
 <table>
   <thead>

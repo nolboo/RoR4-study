@@ -6,6 +6,7 @@ gem 'rails', '4.2.1'
 gem 'actionview-encoded_mail_to'
 gem 'linguistics'
 gem 'faker'
+gem 'kaminari'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

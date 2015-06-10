@@ -4,10 +4,10 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @page = params['page'].to_i
-    @prev_page = @page - 1 unless @page == 0
-    @next_page = @page + 1 unless @page*5 > Movie.count
-    @movies = Movie.limit(5).offset(@page * 5)
+    # @prev_page = @page - 1 unless @page == 0
+    # @next_page = @page + 1 unless (@page*5 > Movie.count)
+    # @movies = Movie.limit(5).offset(@page * 5).order(:updated_at => :desc)
+    @movies = Movie.page(params['page']).order(:updated_at => :desc)
   end
 
   # GET /movies/1

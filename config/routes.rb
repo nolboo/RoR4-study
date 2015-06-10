@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :movies
+  resources :movies do
+    get 'page/:page', :action => :index, :on => :collection
+  end
 
   get 'people/index'
   get 'home' => "page#home"
