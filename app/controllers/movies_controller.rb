@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [ :index, :show ]
+  before_filter :authenticate, except: [ :index, :show ]
 
   # GET /movies
   # GET /movies.json
@@ -66,6 +66,10 @@ class MoviesController < ApplicationController
   end
 
   private
+
+    def authenticate
+      authenticate_user! && current_user.try( :admin? )
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
       @movie = Movie.find(params[:id])
