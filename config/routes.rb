@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'rental/index'
+  get 'rental/show/:id' => "rental#show", :as => 'rental_show'
+
   devise_for :users
 
   resources :movies do
