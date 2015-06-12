@@ -9,6 +9,10 @@
 require 'faker'
 include Faker
 
+nolboo = User.find_by_email("nolboo.kim@gmail.com")
+nolboo.admin = true
+nolboo.save!
+
 formats = %w(Beta VHS IMAX HD SuperHD 4K DVD BlueRay)
 images = %w(skis.jpg boots.jpg poles.jpg)
 
@@ -25,7 +29,17 @@ Movie.destroy_all
                         :thumbnail => "movies/" + images[rand(images.length)]
 
   )
+    movie.save
+    if( ! movie.nil? )
+      (rand(0..10)).times do
+        movie.comments.create( :author => "#{Name.name}",
+                               :title => "#{Company.bs}",
+                               :content => Lorem.sentences(3).join("<br/>").html_safe,
+                               :rating => rand(1..5)
 
+        )
+      end
+    end
   puts movie.inspect
 end
 

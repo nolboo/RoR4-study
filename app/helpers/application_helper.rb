@@ -6,4 +6,8 @@ module ApplicationHelper
       return link_to click_text, url
     end
   end
+
+  def stars( num_stars )
+    return ((image_tag "star.jpg", :size => "32x32") * num_stars).html_safe
+  end
 end

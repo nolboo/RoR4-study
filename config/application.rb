@@ -15,7 +15,7 @@ module Youtubelecture
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
-
+    # config.password.length = 6..10 # 동영상에서는 언제 입력했는지 잠깐 나오는데 이후 과정을 진행하는데 에러가 나서 일단 주석 처리함.
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
