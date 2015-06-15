@@ -1,6 +1,21 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :mail, :spam]
   before_filter :authenticate, except: [ :index, :show ]
+
+  def mail    # mail_movie_path
+    UserMailer.newsletter(@movie, current_user ).deliver
+    redirect_to @movie, notice: 'Email sent.'
+  end
+
+  def spam    # spam_movie_path
+    # Get all of the users
+    # Loop through and send an email to each one
+    users = User.all #where ( :newsletter => true )
+    users.each do | user |
+      UserMailer.newsletter(@movie, user).deliver
+    end
+    redirect_to movies_path, notice: 'Email sent.'
+  end
 
   # GET /movies
   # GET /movies.json

@@ -1,5 +1,6 @@
 class Movie < ActiveRecord::Base
-  has_many :comments
+  has_many :comments, :dependent => :destroy
+
   validates_presence_of :name, :director
   validates_numericality_of :year, :length, :greater_than => 0
   validates_uniqueness_of :name, :message => "이미 저장되어 있는 영화입니다."

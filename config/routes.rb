@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get "movie/:id/mail" => "movies#mail", :as => 'mail_movie'
+  get "movie/:id/spam" => "movies#spam", :as => 'spam_movie'
+
   get 'rental/index'
   get 'rental/show/:id' => "rental#show", :as => 'rental_show'
 
@@ -8,6 +11,7 @@ Rails.application.routes.draw do
   resources :movies do
     get 'page/:page', :action => :index, :on => :collection
     resources :comments
+    # delete 'movie/:id/comments/:comment_id', :controller => :comments, :action => :destroy, :as => "destroy_comment"
   end
 
   get 'people/index'

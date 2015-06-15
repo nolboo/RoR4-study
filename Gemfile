@@ -8,6 +8,7 @@ gem 'linguistics'
 gem 'faker'
 gem 'kaminari'
 gem 'devise'
+gem 'tinymce-rails'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

@@ -46,10 +46,14 @@
     <h3>about <%= time_ago_in_words(comment.created_at)  %> ago, <%= comment.author %> said: </h3>
     <p><%= comment.content %></p>
     <p>Rating: <%= stars(comment.rating) %></p>
+    <% if is_admin? %>
+        <%= link_to "Delete Comment", movie_comment_path(@movie, comment), data: { :confirm => 'Are you sure?' }, :method => :delete %>
+    <% end %>
     <hr/>
 <% end %>
 
 <%= render :partial => 'comment_form' %>
 
+<%= link_to 'Email this movie', mail_movie_path( @movie ) %>
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
